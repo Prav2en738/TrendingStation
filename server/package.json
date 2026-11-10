@@ -1,0 +1,22 @@
+{
+  "name": "toyverse-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node seed/adminSeeder.js",
+    "seed:products": "node seed/productSeed.js",
+    "seed:all": "npm run seed && npm run seed:products",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "multer": "^2.4.0"
+  }
+}

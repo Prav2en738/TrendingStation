@@ -1,0 +1,277 @@
+/* Admin area. Uses the same design tokens as the rest of the app (global.css)
+   and reuses the customer navbar classes, so it looks like part of the same site. */
+
+.admin-page {
+  padding: 7rem 0 var(--space-8);
+  min-height: 100vh;
+}
+
+/* "Admin" pill next to the logo */
+.admin-badge {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--secondary);
+  color: #fff;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-left: 0.35rem;
+}
+
+.admin-title {
+  margin-bottom: var(--space-4);
+}
+.admin-title h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 0.25rem;
+}
+.admin-title p {
+  color: var(--muted);
+}
+
+.admin-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.admin-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-3);
+}
+
+/* ---------- Dashboard ---------- */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.admin-stat {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-3);
+  border-left: 4px solid var(--primary);
+}
+.admin-stat .icon { font-size: 1.4rem; }
+.admin-stat .value {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+  word-break: break-word;
+}
+.admin-stat .label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.admin-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: var(--space-3);
+}
+.admin-charts .admin-card { margin-bottom: 0; }
+.chart-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: -0.75rem 0 var(--space-2);
+}
+.chart-svg { width: 100%; height: auto; display: block; }
+.chart-svg text { font-family: var(--font-body); fill: var(--text-light); }
+.chart-empty { color: var(--muted); text-align: center; padding: var(--space-4) 0; }
+
+/* horizontal bars (category counts, ratings) */
+.hbar-row {
+  display: grid;
+  grid-template-columns: minmax(80px, 110px) 1fr 36px;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+.hbar-track {
+  background: var(--bg-alt);
+  border-radius: var(--radius-full);
+  height: 14px;
+  overflow: hidden;
+}
+.hbar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  transition: width 0.4s ease;
+}
+.hbar-row strong { text-align: right; }
+
+/* ---------- Forms ---------- */
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: var(--space-3);
+}
+.admin-form-grid .full { grid-column: 1 / -1; }
+.admin-field label,
+.admin-label {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-weight: 500;
+  color: var(--text);
+}
+.admin-input,
+.admin-select,
+.admin-textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border);
+  font-size: 1rem;
+  font-family: var(--font-body);
+  background: var(--bg-card);
+  color: var(--text);
+  transition: border-color var(--transition);
+}
+.admin-input:focus,
+.admin-select:focus,
+.admin-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.admin-input:disabled { background: var(--bg-alt); color: var(--muted); }
+.admin-textarea { min-height: 96px; resize: vertical; }
+
+.admin-radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-top: 0.4rem;
+}
+.admin-radio-row label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.price-preview {
+  background: var(--accent-light);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+.admin-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.admin-image-thumb { position: relative; }
+.admin-image-thumb img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border);
+}
+.admin-image-thumb button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--error);
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+.admin-image-add { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.admin-image-add .admin-input { flex: 1 1 220px; }
+
+.admin-alert {
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  font-weight: 500;
+}
+.admin-alert.error { background: rgba(230, 57, 70, 0.1); color: var(--error); }
+.admin-alert.success { background: rgba(6, 167, 125, 0.12); color: var(--success); }
+
+.admin-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* ---------- Tables (scroll sideways instead of breaking the layout) ---------- */
+.admin-table-wrap {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  height:calc(100vh - 21rem);
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-table th {
+  text-align: left;
+  background: var(--bg-alt);
+  font-weight: 600;
+  padding: 0.9rem 1rem;
+  position: sticky;
+  top: 0;
+  white-space: nowrap;
+}
+.admin-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.admin-table .nowrap { white-space: nowrap; }
+.admin-table .address { min-width: 220px; }
+.admin-table.orders-table { min-width: 1200px; }
+.admin-table.products-table { min-width: 900px; }
+.admin-table img.thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+.admin-table .mono { font-family: monospace; font-size: 0.9rem; }
+.admin-table .old-price {
+  color: var(--muted);
+  text-decoration: line-through;
+  font-size: 0.85rem;
+  margin-left: 0.4rem;
+}
+.admin-table .sub-text {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-left: 0.4rem;
+}
+.admin-table-actions { display: flex; gap: var(--space-1); }
+.admin-table-actions .btn { padding: 0.45rem 1rem; font-size: 0.85rem; }
+
+.status-pill {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.admin-select.small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  min-width: 150px;
+}
